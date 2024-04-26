@@ -1,6 +1,6 @@
-# service.template
+# service.bitwarden
 
-service for TEMPLATE
+service for Bitwarden
 
 [Documentation of service core](https://github.com/Vereine-Vereint/service.core)
 
