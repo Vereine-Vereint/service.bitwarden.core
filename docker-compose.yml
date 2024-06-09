@@ -1,5 +1,5 @@
 networks:
-  default:
+  # default:
   traefik:
     external: true
 
@@ -19,32 +19,9 @@ services:
 
     networks:
     - traefik # add to traefik network
-    - default # add to default (stack internal) network
+    # - default # add to default (stack internal) network
 
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.bitwarden.rule=Host(`${BITWARDEN_DOMAIN}`)"
       - "traefik.http.routers.bitwarden.entrypoints=websecure"
-
-
-version: '3'
-
-networks:
-  default:
-    external:
-      name: nginx
-
-services:
-  bitwarden:
-    container_name: "bitwarden"
-    image: vaultwarden/server
-    restart: unless-stopped
-    # ports:
-    #   - 8000:80
-    volumes:
-      - /home/volumes/bitwarden:/data
-    environment:
-      WEBSOCKET_ENABLED: "true" # Required to use websockets
-      SIGNUPS_ALLOWED: "true"   # set to false to disable signups
-      ADMIN_TOKEN: "${ADMIN_TOKEN}"
-
