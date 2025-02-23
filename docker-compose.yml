@@ -5,7 +5,7 @@ networks:
 
 services:
   bitwarden:
-    image: vaultwarden/server
+    image: vaultwarden/server:${BITWARDEN_VERSION}
     restart: unless-stopped
     # ports:
     #   - 8000:80
